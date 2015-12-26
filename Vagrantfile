@@ -4,7 +4,7 @@
 
 Vagrant.configure("2") do |config|
 
-  # create puppet master node, and lets call it pupo...
+  # chefdk machine
   config.vm.define :work_station do |conf|
       conf.vm.box = "ubuntu/trusty64"
       conf.vm.hostname = "workstation"
@@ -18,15 +18,7 @@ Vagrant.configure("2") do |config|
       SHELL
   end
 
-  config.vm.define :chef_server do |conf|
-    conf.vm.box = "ubuntu/trusty64"
-    conf.vm.hostname = "chefserver"
-    conf.vm.network :private_network, ip: "10.0.15.10"
-    conf.vm.provider "virtualbox"
-  end
-
-
-  # create some web servers
+  # create some nodes
   config.vm.define "node_1" do |conf|
     conf.vm.box = "ubuntu/trusty64"
     conf.vm.hostname = "node1"
